@@ -7,8 +7,8 @@ Feature: As an administrator (admin), I want to be able to update the informatio
 
     * The api user sets "api/hub/edit/<id>" path parameters.
     # Api kullanicisi "api/hub/edit/{id}" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing "<name>", "<phone>" and "<address>" information to send to the api hubedit endpoint.
-    # Api kullanicisi api hubedit endpointine gondermek icin "<name>", "<phone>" ve "<address>" bilgilerini iceren bir patch request hazirlar
+    * The api user prepares a patch request to send to the api hubedit endpoint.
+    # Api kullanicisi api hubedit endpointine gondermek icin bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 200.
@@ -20,11 +20,11 @@ Feature: As an administrator (admin), I want to be able to update the informatio
 
 
     Examples:
-      | id | name        | phone       | address              |
-      |    | Updated Hub | 02589632141 | Updated Hub address. |
+      | id  |
+      | 422 |
 
 
-  Scenario Outline: When a PATCH request is sent to the api/hub/edit/{id} endpoint with valid authorization information with
+  Scenario Outline: admin When a PATCH request is sent to the api/hub/edit/{id} endpoint with valid authorization information with
   the correct (id) and no data, it should be verified that the status code returned is 400 and the message information
   in the response body is "No data to update".
 
@@ -40,18 +40,18 @@ Feature: As an administrator (admin), I want to be able to update the informatio
     # Api kullanicisi response bodydeki message bilgisinin "No data to update" oldugunu dogrular
 
     Examples:
-      | id |
-      |    |
+      | id  |
+      | 408 |
 
 
-  Scenario Outline: It should be verified that when sending a PATCH body (name, phone, address) that does not contain an (id)
+  Scenario: admin It should be verified that when sending a PATCH body (name, phone, address) that does not contain an (id)
   to the api/hub/edit/{id} endpoint with valid authorization information, the status code returned is 203 and the
   message in the response body is "No id."
 
     * The api user sets "api/hub/edit" path parameters.
     # Api kullanicisi "api/hub/edit/{id}" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing "<name>", "<phone>" and "<address>" information to send to the api hubedit endpoint.
-    # Api kullanicisi api hubedit endpointine gondermek icin "<name>", "<phone>" ve "<address>" bilgilerini iceren bir patch request hazirlar
+    * The api user prepares a patch request to send to the api hubedit endpoint.
+    # Api kullanicisi api hubedit endpointine gondermek icin bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 203.
@@ -59,18 +59,14 @@ Feature: As an administrator (admin), I want to be able to update the informatio
     * The api user verifies that the "message" information in the response body is "No id.".
     # Api kullanicisi response bodydeki message bilgisinin "No id." oldugunu dogrular
 
-    Examples:
-      | name        | phone       | address              |
-      | Updated Hub | 02589632141 | Updated Hub address. |
 
-
-  Scenario Outline: when sending a PATCH body (name, phone, address) that contains an unregistered (id), the status
+  Scenario Outline: admin when sending a PATCH body (name, phone, address) that contains an unregistered (id), the status
   code returned is 203 and the message in the response body is "There is no Hub with this id".
 
     * The api user sets "api/hub/edit/<id>" path parameters.
     # Api kullanicisi "api/hub/edit/{id}" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing "<name>", "<phone>" and "<address>" information to send to the api hubedit endpoint.
-    # Api kullanicisi api hubedit endpointine gondermek icin "<name>", "<phone>" ve "<address>" bilgilerini iceren bir patch request hazirlar
+    * The api user prepares a patch request to send to the api hubedit endpoint.
+    # Api kullanicisi api hubedit endpointine gondermek icin bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 203.
@@ -79,27 +75,27 @@ Feature: As an administrator (admin), I want to be able to update the informatio
     # Api kullanicisi response bodydeki message bilgisinin "There is no Hub with this id" oldugunu dogrular
 
     Examples:
-      | id   | name        | phone       | address              |
-      | 2514 | Updated Hub | 02589632141 | Updated Hub address. |
+      | id   |
+      | 2514 |
 
 
-  Scenario Outline: When a PATCH body (name, phone, address) is sent to the api/hub/edit/{id} endpoint with invalid
+  Scenario Outline: Invalid Token When a PATCH body (name, phone, address) is sent to the api/hub/edit/{id} endpoint with invalid
   authorization information, it should be verified that the status code returned is 401 and the message information
   in the response body is “Unauthenticated.”.
 
     * The api user sets "api/hub/edit/<id>" path parameters.
     # Api kullanicisi "api/hub/edit/{id}" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing "<name>", "<phone>" and "<address>" information to send to the api hubedit endpoint.
-    # Api kullanicisi api hubedit endpointine gondermek icin "<name>", "<phone>" ve "<address>" bilgilerini iceren bir patch request hazirlar
+    * The api user prepares a patch request to send to the api hubedit endpoint.
+    # Api kullanicisi api hubedit endpointine gondermek icin bir patch request hazirlar
     * The api user sends a PATCH request, saves the returned response, and verifies that the status code is '401' with the reason phrase Unauthorized.
     # Api kullanicisi PATCH request gonderir, donen responsei kaydeder, status codeun '401' ve reason phrase bilgisinin Unauthorized oldugunu dogrular
 
     Examples:
-      | id | name        | phone       | address              |
-      |    | Updated Hub | 02589632141 | Updated Hub address. |
+      | id  |
+      | 419 |
 
 
-  Scenario Outline: It should be verified that the hub record requested to be updated via API has been updated via API.
+  Scenario Outline: admin It should be verified that the hub record requested to be updated via API has been updated via API.
   (It can be verified that the record has been updated by sending a GET request to the api/hub/{id} endpoint with the “id”
   returned in the response body).
 
@@ -107,10 +103,10 @@ Feature: As an administrator (admin), I want to be able to update the informatio
     # Api kullanicisi "api/hub/{id}" path parametrelerini olusturur
     * The api user sends a GET request and saves the returned response.
     # Api kullanicisi GET request gonderir ve donen responsei kaydeder
-    * The api user verifies that sname is "Updated Hub"
-    # Api kullanicisi sname bilgisinin "Updated Hub" oldugunu dogrular
+    * The api user verifies that name is "Updated Hub"
+    # Api kullanicisi name bilgisinin "Updated Hub" oldugunu dogrular
 
     Examples:
-      | id |
-      |    |
+      | id  |
+      | 419 |
 

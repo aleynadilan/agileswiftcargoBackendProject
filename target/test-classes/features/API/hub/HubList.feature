@@ -1,5 +1,5 @@
 Feature: As an administrator (admin) I want to be able to access Hub List via API connection.
-  @US
+
   Scenario Outline: admin Send a GET request to the api/hub/list endpoint with valid authorization, verify that the
   response status code is 200 and the message in the response body is 'Success'. Additionally, validate the
   details (name, phone, address, current_balance, status, created_at, updated_at) of the entry with id(x) in

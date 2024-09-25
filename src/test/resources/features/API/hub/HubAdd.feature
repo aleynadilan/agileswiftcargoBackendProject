@@ -74,8 +74,7 @@ Feature: As an administrator (admin) I want to be able to create a new hub recor
       | name     | phone       | address        |
       | Test Hub | 01000000004 | Houston, Texas |
 
-
-  Scenario Outline: The new hub record to be created from the API must be verified from the API.
+  Scenario Outline: admin The new hub record to be created from the API must be verified from the API.
   (With the “New Hub ID” returned in the response body, it can be verified that a record was created by sending a GET
   request to the api/hub/{id} endpoint.)
 
@@ -87,5 +86,5 @@ Feature: As an administrator (admin) I want to be able to create a new hub recor
     # Api kullanicisi status codeun 200 oldugunu dogrular
 
     Examples:
-      | id |
-      |    |
+      | id  |
+      | 417 |
