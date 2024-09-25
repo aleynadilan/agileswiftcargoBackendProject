@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="12.811">
+    <testcase classname="As an administrator (admin) I want to be able to access Hub List via API connection." name="admin Send a GET request to the api/hub/list endpoint with valid authorization, verify that the" time="12.162">
+        <system-out><![CDATA[* The api user sets "api/hub/list" path parameters..........................passed
+* The api user sends a GET request and saves the returned response..........passed
+* The api user verifies that the status code is 200.........................passed
+* The api user verifies that the "message" information in the response body is "Success"..passed
+* The api user verifies the information in the response body for the entry with the specified 0 index, including "New York City", "01000000001", "New York City, New York", "0.00", 1, "2023-08-01T14:12:21.000000Z" and "2023-08-01T14:12:21.000000Z"..passed
+]]></system-out>
+    </testcase>
+</testsuite>

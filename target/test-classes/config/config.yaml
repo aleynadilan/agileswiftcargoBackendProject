@@ -1,0 +1,11 @@
+api:
+  base_url: "https://qa.agileswiftcargo.com/"
+  unauthorizedExceptionMessage: "status code: 401, reason phrase: Unauthorized"
+  invalidToken: "invalid"
+
+database:
+  host: "localhost"
+  port: 3306
+  URL:
+  USERNAME:
+  PASSWORD:
